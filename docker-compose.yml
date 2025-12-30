@@ -1,0 +1,14 @@
+services:
+  notebook-env:
+    build:
+      context: .
+      dockerfile: Dockerfile.notebook
+    container_name: capstone-notebook
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./:/app
+      - /app/.venv
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+  
