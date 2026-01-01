@@ -208,3 +208,6 @@ __marimo__/
 
 # MacOS
 .DS_Store
+
+# En tu .gitignore añade:
+kaggle.json

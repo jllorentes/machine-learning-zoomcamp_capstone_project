@@ -1,5 +1,5 @@
 services:
-  notebook-env:
+  jupyter:
     build:
       context: .
       dockerfile: Dockerfile.notebook
@@ -7,8 +7,8 @@ services:
     ports:
       - "8888:8888"
     volumes:
-      - ./:/app
-      - /app/.venv
+      - ./:/workspace
+      - ./data:/workspace/data
     environment:
       - JUPYTER_ENABLE_LAB=yes
-  
+    restart: unless-stopped

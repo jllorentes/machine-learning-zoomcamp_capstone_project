@@ -20,4 +20,6 @@ dependencies = [
     "tqdm",
     "onnxruntime>=1.16.0",
     "pillow>=10.1.0",
+    "ipykernel>=7.1.0",
+    "kaggle>=1.8.3",
 ]
