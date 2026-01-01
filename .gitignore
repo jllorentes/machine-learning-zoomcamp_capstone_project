@@ -209,5 +209,8 @@ __marimo__/
 # MacOS
 .DS_Store
 
-# En tu .gitignore añade:
+# kaggle key:
 kaggle.json
+
+# local data folder
+.data/

@@ -8,7 +8,9 @@ services:
       - "8888:8888"
     volumes:
       - ./:/workspace
+      - /workspace/.venv
       - ./data:/workspace/data
     environment:
       - JUPYTER_ENABLE_LAB=yes
+      - KAGGLE_CONFIG_DIR=/workspace
     restart: unless-stopped
