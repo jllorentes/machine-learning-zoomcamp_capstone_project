@@ -1,19 +1,25 @@
-FROM python:3.11-slim
+FROM python:3.11-slim-bookworm
 
-RUN apt-get update && apt-get install -y \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    UV_PROJECT_ENVIRONMENT="/workspace/.venv"
 
 WORKDIR /workspace
 
-COPY pyproject.toml .
-COPY uv.lock .
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libgl1 \
+    libglib2.0-0 \
+    git \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN pip install uv
+COPY pyproject.toml uv.lock ./
 
-# Install dependencies
-# RUN uv pip install --system -r pyproject.toml
-RUN uv pip install --system .
+RUN uv sync --frozen
+
+ENV PATH="/workspace/.venv/bin:$PATH"
 
 EXPOSE 8888
 
