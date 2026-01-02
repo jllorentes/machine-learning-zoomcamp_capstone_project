@@ -5,7 +5,7 @@ import sys
 # --- CONFIGURACIÓN ---
 URL = "https://smartclaim-api.onrender.com/predict"
 
-IMAGE_PATH = "./data/data1a/validation/00-damage/0002.JPEG" 
+IMAGE_PATH = "./data/processed/test/damage/0042.JPEG" 
 
 print(f"Starting test against: {URL}")
 
