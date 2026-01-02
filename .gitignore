@@ -221,6 +221,7 @@ data/
 # models
 *.h5
 *.onnx
+*.onnx.data
 *.pt
 *.pth
 *.tflite
