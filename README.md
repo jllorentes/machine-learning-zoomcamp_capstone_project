@@ -83,11 +83,18 @@ uv sync
 pip install -r requirements.txt
 ```
 
-3. **ata Preparation**
+3. **Data Preparation**
 Run the script to download the dataset from Kaggle, remove corrupt images, and split into Train/Val/Test.
 
 ```bash
 uv run python scripts/prepare_dataset.py
+```
+
+You can also run the EDA notebook to clean the data (notebooks/eda.ipynb).
+To do so, I provide a Jupyter notebook environment in a container.
+
+```bash
+docker-compose up -d --build jupyter
 ```
 
 4. **Training (Optional)**
@@ -97,7 +104,10 @@ To retrain the model locally (CPU/MPS) with the optimized hyperparameters:
 uv run python scripts/train.py
 ```
 
-Output: This will overwrite car_damage.onnx.
+Output: This will overwrite best_car_damage_model.onnx.
+
+I recommend doing the training in Google Colab, as it takes a long time if you train with a CPU.
+To do this, you have a copy of the Google Colab used in notebooks/machine_learning_zoomcamp_capstone_project.ipynb, or you can access the Colab used at: https://colab.research.google.com/drive/1rJ5MoFTnYObJlO2PFY-V-qX7rsQKLuwv
 
 5. **Running the API (Docker) - Recommended**
 Build and run the production container. This simulates the exact cloud environment.
@@ -154,7 +164,8 @@ We iterated over:
 * Backbone: MobileNetV3 Small (Frozen)
 * Inner Layer: 128 units
 * Dropout: 0.3
-* Optimizer: Adam (LR=0.001)
+* Optimizer: Adam (LR=0.01)
+* Final Accuracy in Test Set: 90.97%
 
 ## 🛠️ Tech Stack Details
 * **Language**: Python 3.11
