@@ -23,7 +23,7 @@ RUN uv sync --frozen --no-dev
 
 ENV PATH="/app/.venv/bin:$PATH"
 
-COPY predict.py .
+COPY /scripts/predict.py .
 COPY best_car_damage_model.onnx .
 COPY best_car_damage_model.onnx.data .
 

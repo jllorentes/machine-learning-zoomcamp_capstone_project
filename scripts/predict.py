@@ -11,7 +11,7 @@ app = FastAPI(
 )
 
 # --- CONFIGURACIÓN ---
-MODEL_PATH = "car_damage.onnx"
+MODEL_PATH = "best_car_damage_model.onnx"
 CLASS_NAMES = ["Damaged", "Whole"] 
 
 print("Loading ONNX model...")

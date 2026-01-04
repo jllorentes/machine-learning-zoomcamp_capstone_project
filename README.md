@@ -112,20 +112,27 @@ docker run -it --rm -p 9696:9696 smartclaim-api
 
 The API is now active at http://localhost:9696.
 
+Testing in Local
+You can test the deployed model using the provided script:
+
+```bash
+# Run the test
+uv run python scripts/test_api.py
+```
 
 ## ☁️ Cloud Deployment
 The service is deployed on Render.
 
 🔗 Live URL: https://smartclaim-api.onrender.com/docs
 (Note: As it is a Free Tier service, the first request might take 50s to wake up the instance. Please be patient).
+![Render deployed API](screenshots/Render_screenshot.png "Render deployed API")
 
 Testing the Cloud API
 You can test the deployed model using the provided script:
 
 ```bash
-# 1. Edit scripts/test_api.py and set URL to the cloud address
-# 2. Run the test
-uv run python scripts/test_api.py
+# Run the test
+uv run python scripts/test_api.render.py
 ```
 
 ## 📊 Methodology & Results
