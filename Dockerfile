@@ -24,8 +24,8 @@ RUN uv sync --frozen --no-dev
 ENV PATH="/app/.venv/bin:$PATH"
 
 COPY predict.py .
-COPY car_damage.onnx .
-COPY car_damage.onnx.data .
+COPY best_car_damage_model.onnx .
+COPY best_car_damage_model.onnx.data .
 
 EXPOSE 9696
 
