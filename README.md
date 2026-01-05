@@ -56,6 +56,7 @@ smartclaim/
 └── README.md
 ```
 
+---
 
 ## 🚀 How to Run
 1. **Prerequisites**
@@ -97,6 +98,8 @@ To do so, I provide a Jupyter notebook environment in a container.
 docker-compose up -d --build jupyter
 ```
 
+---
+
 ### 4. Full Training Pipeline (Dockerized) 🐳
 To reproduce the entire MLOps cycle locally (Download Data -> Clean & Split -> Train -> Export), simply run the trainer container.
 
@@ -136,6 +139,8 @@ You can test the deployed model using the provided script:
 uv run python scripts/test_api.py
 ```
 
+---
+
 ## ☁️ Cloud Deployment
 The service is deployed on Render.
 
@@ -150,6 +155,8 @@ You can test the deployed model using the provided script:
 # Run the test
 uv run python scripts/test_api.render.py
 ```
+
+---
 
 ## 📊 Methodology & Results
 **Data Splitting Strategy**
