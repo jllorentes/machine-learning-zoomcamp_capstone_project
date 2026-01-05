@@ -10,7 +10,7 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# --- CONFIGURACIÓN ---
+# --- CONFIGURATION ---
 MODEL_PATH = "best_car_damage_model.onnx"
 CLASS_NAMES = ["Damaged", "Whole"] 
 
@@ -63,7 +63,7 @@ def home():
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
     if file.content_type and not file.content_type.startswith("image/"):
-        raise HTTPException(status_code=400, detail="El archivo debe ser una imagen.")
+        raise HTTPException(status_code=400, detail="The file must be an image.")
     
     content = await file.read()
     
