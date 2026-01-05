@@ -158,7 +158,7 @@ You can test the deployed model using the provided script:
 
 ```bash
 # Run the test
-uv run python scripts/test_api.render.py
+uv run python scripts/test_api_render.py
 ```
 
 ---
