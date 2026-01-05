@@ -39,14 +39,19 @@ smartclaim/
 ├── data/                  # Ignored by Git. Created automatically by scripts.
 ├── notebooks/
 │   ├── eda.ipynb       # EDA, Feature Analysis.
-│   ├── machine_learning_zoomcamp_capstone_project.ipynb    # Training Model & Hyperparameter Tuning in Google Colab
+│   ├── machine_learning_zoomcamp_capstone_project.ipynb    # Training Model & Hyperparameter Tuning in Google Colab.
+├── screenshots/
+│   ├── Render_screenshot.png   # Render API Doc screenshot.
 ├── scripts/
+│   ├── pentrypoint.sh     # Orchestrates data preparation and training.
 │   ├── prepare_dataset.py # Downloads, cleans, and splits data (60/20/20).
 │   ├── train.py           # Training pipeline (PyTorch) -> Exports ONNX.
 │   ├── predict.py         # FastAPI App (Inference Logic).
-│   └── test_api.py        # Script to test the deployed API.
+│   └── test_api_render.py # Script to test the Render deployed API.
+│   └── test_api.py        # Script to test the local deployed API.
 ├── Dockerfile             # Production-ready image definition.
 ├── Dockerfile.notebook    # Dev environment image definition.
+├── Dockerfile.train       # Dev environment to prepare and train the model.
 ├── docker-compose.yml     # Docker compose definition.
 ├── pyproject.toml         # Python dependencies managed by uv.
 ├── car_damage.onnx        # Initial Trained model.
