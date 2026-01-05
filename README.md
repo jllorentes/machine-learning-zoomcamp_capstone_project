@@ -97,17 +97,23 @@ To do so, I provide a Jupyter notebook environment in a container.
 docker-compose up -d --build jupyter
 ```
 
-4. **Training (Optional)**
-To retrain the model locally (CPU/MPS) with the optimized hyperparameters:
+### 4. Full Training Pipeline (Dockerized) 🐳
+To reproduce the entire MLOps cycle locally (Download Data -> Clean & Split -> Train -> Export), simply run the trainer container.
 
+This pipeline will:
+1.  **Download** the raw dataset from Kaggle (if not present).
+2.  **Clean** corrupt images and **Split** into Train (60%) / Val (20%) / Test (20%).
+3.  **Train** the MobileNetV3 model using the processed data.
+4.  **Export** the final `best_car_damage_model.onnx` model to your project root.
+
+**Run the pipeline:**
 ```bash
-uv run python scripts/train.py
+docker-compose up --build trainer
 ```
 
-Output: This will overwrite best_car_damage_model.onnx.
+Output: This will overwrite best_car_damage_model.onnx and best_car_damage_model.onnx.data.
 
-I recommend doing the training in Google Colab, as it takes a long time if you train with a CPU.
-To do this, you have a copy of the Google Colab used in notebooks/machine_learning_zoomcamp_capstone_project.ipynb, or you can access the Colab used at: https://colab.research.google.com/drive/1rJ5MoFTnYObJlO2PFY-V-qX7rsQKLuwv
+The training can be done also in Google Colab. To do so, you have a copy of the Google Colab used in notebooks/machine_learning_zoomcamp_capstone_project.ipynb, or you can access the Colab used at: https://colab.research.google.com/drive/1rJ5MoFTnYObJlO2PFY-V-qX7rsQKLuwv
 
 5. **Running the API (Docker) - Recommended**
 Build and run the production container. This simulates the exact cloud environment.

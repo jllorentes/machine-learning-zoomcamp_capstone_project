@@ -26,3 +26,20 @@ services:
       - "9696:9696"
     environment:
       - PORT=9696
+  
+  # SERVICE 3: Trainer
+  trainer:
+    build:
+      context: .
+      dockerfile: Dockerfile.train
+    container_name: capstone-trainer
+    volumes:
+      - ./:/app
+      - /app/.venv
+      - torch_cache:/root/.cache/torch
+    environment:
+      - KAGGLE_CONFIG_DIR=/app
+    command: bash scripts/entrypoint.sh
+
+volumes:
+  torch_cache: # Persistent volume so as not to download the MobileNet model every time

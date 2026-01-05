@@ -6,6 +6,8 @@ from torchvision import datasets, transforms, models
 from torch.utils.data import DataLoader
 import copy
 import time
+import sys
+from pathlib import Path
 
 # --- 1. SETTINGS ---
 # Balanced configuration from Colab experiments
@@ -16,8 +18,11 @@ DROPRATE = 0.3
 
 BATCH_SIZE = 16
 IMG_SIZE = 224
-DATA_DIR = "data/processed" # Ensure that you have executed prepare_dataset.py
-MODEL_SAVE_PATH = "best_car_damage_model.onnx"
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = BASE_DIR / "data" / "processed"
+MODEL_SAVE_PATH = BASE_DIR / "best_car_damage_model.onnx"
+
 
 # Device detection (Support for Mac M1/M2 or CUDA if available)
 device = torch.device("cuda" if torch.cuda.is_available() else ("mps" if torch.backends.mps.is_available() else "cpu"))

@@ -4,11 +4,35 @@ import random
 from pathlib import Path
 
 # --- SETINGS ---
-RAW_DATA_DIR = Path("data/data1a") 
+
+RAW_DATA_DIR = Path("data/raw_temp") 
 OUTPUT_DIR = Path("data/processed")
 
 SPLIT_RATIOS = (0.6, 0.2, 0.2) # Train, Val, Test
 SEED = 42 # For reproducibility
+# PROJECT_ROOT = Path(__file__).resolve().parent.parent
+PROJECT_ROOT = Path(".")
+os.environ['KAGGLE_CONFIG_DIR'] = str(PROJECT_ROOT)
+from kaggle.api.kaggle_api_extended import KaggleApi
+
+
+def download_dataset():
+    
+    
+    if RAW_DATA_DIR.exists():
+        print("The temporary download folder already exists. Skipping download..")
+        return
+
+    print("Downloading dataset from Kaggle...")
+    api = KaggleApi()
+    api.authenticate()
+    
+    api.dataset_download_files("anujms/car-damage-detection", path=RAW_DATA_DIR, unzip=True)
+    
+    for zip_file in RAW_DATA_DIR.glob("*.zip"):
+        zip_file.unlink()
+        
+    print(f"Download completed in: {RAW_DATA_DIR}")
 
 def setup_directories():
     if OUTPUT_DIR.exists():
@@ -49,6 +73,9 @@ def split_and_copy(files, label_dest):
             shutil.copy2(file, dest)
 
 def main():
+    
+    download_dataset()
+
     random.seed(SEED)
     
     if not RAW_DATA_DIR.exists():
