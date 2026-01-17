@@ -1,5 +1,5 @@
 services:
-  # SERVICE 1: Your Notebook Environment
+  # SERVICE 1: Notebook Environment
   jupyter:
     build:
       context: .

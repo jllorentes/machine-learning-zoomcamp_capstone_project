@@ -143,8 +143,8 @@ def train_model():
                 best_model_wts = copy.deepcopy(model.state_dict())
 
     time_elapsed = time.time() - start_time
-    print(f'\n🏁 Training completed in {time_elapsed // 60:.0f}m {time_elapsed % 60:.0f}s')
-    print(f'🏆 Best Val Acc: {best_acc:.4f}')
+    print(f'\n Training completed in {time_elapsed // 60:.0f}m {time_elapsed % 60:.0f}s')
+    print(f'Best Val Acc: {best_acc:.4f}')
 
     # Load best weights
     model.load_state_dict(best_model_wts)
@@ -152,7 +152,7 @@ def train_model():
 
 # --- 5. EXPORT ---
 def export_onnx(model):
-    print(f"💾 Exporting model to {MODEL_SAVE_PATH}...")
+    print(f"Exporting model to {MODEL_SAVE_PATH}...")
     model.eval()
     dummy_input = torch.randn(1, 3, IMG_SIZE, IMG_SIZE).to(device)
     

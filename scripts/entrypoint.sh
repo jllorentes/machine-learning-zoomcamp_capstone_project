@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 'set -e' hace que el script se detenga inmediatamente si algún comando falla
+# 'set -e' makes the scripts stop execution if any command fails
 set -e
 
 echo "========================================"
